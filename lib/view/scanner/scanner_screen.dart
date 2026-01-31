@@ -35,7 +35,6 @@ class _ScannerScreenState extends State<ScannerScreen> {
       );
 
       if (document == null) {
-        // user cancelled
         return;
       }
 
@@ -43,19 +42,27 @@ class _ScannerScreenState extends State<ScannerScreen> {
         throw Exception('PDF not generated');
       }
 
-      /// Save PDF bytes to file
-      final Uint8List pdfBytes = document.pdfBytes!;
-      final dir = await getApplicationDocumentsDirectory();
 
-      final fileName =
-          'scan_${DateTime.now().millisecondsSinceEpoch}.pdf';
-      final file = File('${dir.path}/$fileName');
+      final Uint8List pdfBytes = document.pdfBytes!;
+
+      final Directory? extDir = await getExternalStorageDirectory();
+      if (extDir == null) {
+        throw Exception('External storage not available');
+      }
+      final Directory customDir = Directory('${extDir.path}/graphics');
+      if (!await customDir.exists()) {
+        await customDir.create(recursive: true);
+      }
+
+      final fileName = 'scan_${DateTime.now().millisecondsSinceEpoch}.pdf';
+      final File file = File('${customDir.path}/$fileName');
+      print(file);
 
       await file.writeAsBytes(pdfBytes);
 
       final stat = await file.stat();
 
-      /// Send to BLoC → SQLite
+
       context.read<FileBloc>().add(
         AddFile(
           FileItem(
@@ -72,7 +79,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
     } on DocumentScanException catch (e) {
       print(e);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(e.message ?? 'Scan failed')),
+        SnackBar(content: Text(e.message)),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
