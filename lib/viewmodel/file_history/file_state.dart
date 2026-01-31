@@ -1,4 +1,4 @@
-import '../models/file_item.dart';
+import '../../models/file_item.dart';
 
 abstract class FileState {}
 

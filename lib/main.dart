@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'bloc/file_bloc.dart';
-import 'bloc/file_event.dart';
-import 'database/db_helper.dart';
-import 'screens/history_screen.dart';
+import 'package:scanner_project/viewmodel/file_history/file_event.dart';
+import 'core/database/db_helper.dart';
+import 'viewmodel/file_history/file_bloc.dart';
+import 'view/history/history_screen.dart';
 
 void main() {
   runApp(const MyApp());

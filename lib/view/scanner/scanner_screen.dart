@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:simplest_document_scanner/simplest_document_scanner.dart';
 
-import '../bloc/file_bloc.dart';
-import '../bloc/file_event.dart';
-import '../models/file_item.dart';
+import '../../viewmodel/file_history/file_bloc.dart';
+import '../../models/file_item.dart';
+import '../../viewmodel/file_history/file_event.dart';
 
 class ScannerScreen extends StatefulWidget {
   const ScannerScreen({super.key});

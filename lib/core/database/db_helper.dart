@@ -1,6 +1,8 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import '../models/file_item.dart';
+
+import '../../models/file_item.dart';
+
 
 class DBHelper {
   static Database? _db;

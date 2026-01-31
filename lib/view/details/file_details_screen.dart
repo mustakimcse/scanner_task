@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/file_item.dart';
+import '../../models/file_item.dart';
 
 class FileDetailsScreen extends StatelessWidget {
   final FileItem file;

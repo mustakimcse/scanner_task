@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/file_bloc.dart';
-import '../bloc/file_event.dart';
-import '../models/file_item.dart';
-import '../screens/file_details_screen.dart';
+import '../../../models/file_item.dart';
+import '../../../viewmodel/file_history/file_bloc.dart';
+import '../../../viewmodel/file_history/file_event.dart';
+import '../../details/file_details_screen.dart';
+
 
 class FileTile extends StatelessWidget {
   final FileItem file;

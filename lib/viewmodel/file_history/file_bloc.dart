@@ -1,9 +1,10 @@
 import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../database/db_helper.dart';
-import '../models/file_item.dart';
+import '../../core/database/db_helper.dart';
+import '../../models/file_item.dart';
 import 'file_event.dart';
 import 'file_state.dart';
+
 
 class FileBloc extends Bloc<FileEvent, FileState> {
   final DBHelper db;
